@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wutao18.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="2019 Multi-University Training Contest 10 补题链接：2019 Multi-University Training Contest 10 1003 Valentine’s Day (HDU 6693)题意 有 $n$ 种礼物，第 $i$ 种礼物能让女朋友开心的概率为 $P_i$，挑一些礼物，问让女朋友开心一次的概率最大为多少。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 杭电多校 第十场">
+<meta property="og:url" content="http://wutao18.github.io/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/index.html">
+<meta property="og:site_name" content="WuTao&#39;s Blog">
+<meta property="og:description" content="2019 Multi-University Training Contest 10 补题链接：2019 Multi-University Training Contest 10 1003 Valentine’s Day (HDU 6693)题意 有 $n$ 种礼物，第 $i$ 种礼物能让女朋友开心的概率为 $P_i$，挑一些礼物，问让女朋友开心一次的概率最大为多少。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/WuTao18/images/master/gitnote/2019/08/23/1566573834928-1566573834928.png">
+<meta property="article:published_time" content="2019-08-29T02:29:05.000Z">
+<meta property="article:modified_time" content="2020-10-27T06:19:03.215Z">
+<meta property="article:author" content="吴涛">
+<meta property="article:tag" content="ACM刷题">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="计算几何">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="暴力">
+<meta property="article:tag" content="概率">
+<meta property="article:tag" content="剪枝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/WuTao18/images/master/gitnote/2019/08/23/1566573834928-1566573834928.png">
+
+<link rel="canonical" href="http://wutao18.github.io/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2019 杭电多校 第十场 | WuTao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="WuTao's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WuTao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">while(!(succeed = try()));</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="吴涛">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuTao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2019 杭电多校 第十场
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-29 10:29:05" itemprop="dateCreated datePublished" datetime="2019-08-29T10:29:05+08:00">2019-08-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 14:19:03" itemprop="dateModified" datetime="2020-10-27T14:19:03+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/" class="post-meta-item leancloud_visitors" data-flag-title="2019 杭电多校 第十场" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="http://acm.hdu.edu.cn/contests/contest_show.php?cid=857" target="_blank" rel="noopener">2019 Multi-University Training Contest 10</a></p>
+<p>补题链接：<a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2019+Multi-University+Training+Contest+10&amp;source=1&amp;searchmode=source" target="_blank" rel="noopener">2019 Multi-University Training Contest 10</a></p>
+<h2 id="1003-Valentine’s-Day-HDU-6693"><a href="#1003-Valentine’s-Day-HDU-6693" class="headerlink" title="1003 Valentine’s Day (HDU 6693)"></a>1003 <a href="https://wutao18.github.io/2019/08/22/HDU-6693-Valentine-s-Day-%E6%A6%82%E7%8E%87/">Valentine’s Day</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=6693" target="_blank" rel="noopener">(HDU 6693)</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><blockquote>
+<p>有 $n$ 种礼物，第 $i$ 种礼物能让女朋友开心的概率为 $P_i$，挑一些礼物，问让女朋友开心一次的概率最大为多少。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>概率 贪心</strong></p>
+<p>如果有概率大于等于 $0.5$ 的礼物，输出其中最大的。</p>
+<p>否则，对概率从大到小。暴力枚举选择前 $k$ 大的礼物的的概率，求最大值即可。</p>
+<p>此题有原题。见 <a href="https://codeforces.com/problemset/problem/442/B" target="_blank" rel="noopener">CodeForces 442B</a></p>
+<p>相关证明见官方题解：<a href="https://codeforces.com/blog/entry/12739" target="_blank" rel="noopener">Codeforces #253 editorial</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> p[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">0</span>, maxa = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;p[i]);</span><br><span class="line">            <span class="keyword">if</span>(p[i] &gt;= <span class="number">0.5</span>) &#123;</span><br><span class="line">                flag = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(maxa = <span class="number">-1</span>) maxa = p[i];</span><br><span class="line">                <span class="keyword">else</span> maxa = max(maxa, p[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%.6lf\n"</span>, maxa);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sort(p, p + n);</span><br><span class="line">            <span class="keyword">double</span> tmp1 = p[n - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">double</span> tmp2 = p[n - <span class="number">1</span>] * (<span class="number">1</span> - p[n - <span class="number">2</span>]) + p[n - <span class="number">2</span>] * (<span class="number">1</span> - p[n - <span class="number">1</span>]);</span><br><span class="line">            ans = tmp2;</span><br><span class="line">            <span class="keyword">int</span> k = <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">while</span>(tmp1 &lt; tmp2 &amp;&amp; k &lt;= n) &#123;</span><br><span class="line">                ans = tmp2;</span><br><span class="line">                tmp1 = tmp2;</span><br><span class="line">                tmp2 = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= n - k; --i) &#123;</span><br><span class="line">                    <span class="keyword">double</span> tmp = <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j = n - <span class="number">1</span>; j &gt;= n - k; --j) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(j == i) &#123;</span><br><span class="line">                            tmp *= p[j];</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            tmp *= <span class="number">1</span> - p[j];</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    tmp2 += tmp;</span><br><span class="line">                &#125;</span><br><span class="line">                k ++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%.6lf\n"</span>, max(ans, tmp2));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1005-Welcome-Party-HDU-6695"><a href="#1005-Welcome-Party-HDU-6695" class="headerlink" title="1005 Welcome Party (HDU 6695)"></a>1005 <a href="https://wutao18.github.io/2019/08/23/HDU-6695-Welcome-Party-%E8%B4%AA%E5%BF%83/">Welcome Party</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=6695" target="_blank" rel="noopener">(HDU 6695)</a></h2><p>$solved by ch$</p>
+<h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><blockquote>
+<p>有 $n$ 个人，$2$ 种节目，每个人要表演其中的一种节目，每种节目至少有一人表演。用 $x_i$ 和 $y_i$ 表示第 $i (1\le i\le n)$ 个人表演两种节目的能力值。现在要使表演第一种节目的人中的能力最大值与表演第二种节目的人中的能力最大值之差最小，求这个最小值。</p>
+</blockquote>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p><strong>贪心</strong></p>
+<p>如下图，维护两个集合 $s_1$ 和 $s_2$。 </p>
+<p>按 $x$ 从大到小枚举。假设 $x_i$ 为 $x$ 中的最大值 (下图中的 $4$)，则比 $x_i$ 大的都选择 $y$，也就是取 $s_1$ 中的最大值 (下图中的 $8$)。比 $x_i$ 小的取与 $x_i$ 最接近的 $y$ (下图中的 $3$)，因为更大的 $y$ 可以选择 $x$ (下图中的 $7$ 可以用 $2$ 替换)。然后取两个的较大值更新到 $ans$ (下图中 $|3 - 4| &lt; |8 - 4|$ 取 $8 - 4$)，维护最小值 $ans$ 即可。</p>
+<p>比赛中队友 (线段树大佬) 用线段树过的。赛后我用 $multiset$ 写了一下。</p>
+<p><img src="https://raw.githubusercontent.com/WuTao18/images/master/gitnote/2019/08/23/1566573834928-1566573834928.png" alt=""></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf = <span class="number">2e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">STU</span> &#123;</span></span><br><span class="line">    ll x, y;</span><br><span class="line">&#125; s[maxn];</span><br><span class="line">ll maxy[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(STU s1, STU s2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> s1.x &gt; s2.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">multiset</span>&lt;ll&gt; s1, s2;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; s[i].x &gt;&gt; s[i].y;</span><br><span class="line">            s2.insert(s[i].y);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(s, s + n, cmp);</span><br><span class="line">        ll ans = inf;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            s2.erase(s2.find(s[i].y));  <span class="comment">// 一个人只能选择一种表演</span></span><br><span class="line">            <span class="keyword">if</span>(!s1.empty()) &#123;</span><br><span class="line">                ans = min(ans, <span class="built_in">abs</span>(*s1.rbegin() - s[i].x));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!s2.empty()) &#123;</span><br><span class="line">                <span class="built_in">multiset</span>&lt;ll&gt;::iterator it = s2.lower_bound(s[i].x); <span class="comment">// 找到第一个大于等于 s[i].x 的 y</span></span><br><span class="line">                <span class="keyword">if</span>(it == s2.end()) &#123;</span><br><span class="line">                    --it;</span><br><span class="line">                &#125;</span><br><span class="line">                ll tmp = <span class="built_in">abs</span>(*it - s[i].x);</span><br><span class="line">                <span class="keyword">if</span>(tmp &lt; ans &amp;&amp; (s1.empty() || *it &gt; *s1.rbegin())) &#123;</span><br><span class="line">                    ans = tmp;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(it != s2.begin()) &#123;  <span class="comment">// 找到最后一个小于 s[i].x 的 y</span></span><br><span class="line">                    --it;</span><br><span class="line">                    tmp = <span class="built_in">abs</span>(*it - s[i].x);</span><br><span class="line">                    <span class="keyword">if</span>(tmp &lt; ans &amp;&amp; (s1.empty() || *it &gt; *s1.rbegin())) &#123;</span><br><span class="line">                        ans = tmp;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                s1.insert(s[i].y);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1007-Closest-Pair-of-Segments-HDU-6697"><a href="#1007-Closest-Pair-of-Segments-HDU-6697" class="headerlink" title="1007 Closest Pair of Segments (HDU 6697)"></a>1007 <a href="https://wutao18.github.io/2019/08/24/HDU-6697-Closest-Pair-of-Segments-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E6%9A%B4%E5%8A%9B/">Closest Pair of Segments</a> <a href="http://acm.hdu.edu.cn/showproblem.php?pid=6697" target="_blank" rel="noopener">(HDU 6697)</a></h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><blockquote>
+<p>类似于计算几何中的最近点对问题，本题求的是最近线段对。</p>
+<p>给定 $n$ 条线段，求出最近线段对之间的距离。</p>
+</blockquote>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p><strong>暴力 剪枝</strong></p>
+<p>比赛时我用了三角剖分，结果超时了。</p>
+<p>赛后补题时看到了这篇博客：<a href="https://www.cnblogs.com/dd-bond/p/11391771.html" target="_blank" rel="noopener">HDU 6697 Closest Pair of Segments（线段距离）</a></p>
+<p>原来暴力加上剪枝就能过。思路是这样的：</p>
+<p>首先将线段的左侧端点按照横坐标为第一关键字，纵坐标为第二关键字排序。然后暴力找所有线段对，维护最小值 $ans$。如果当前查询的线段对中，右侧线段的左端点与左侧线段的右端点的横坐标差值大于 $ans$ 时，就不用再找更右侧的直线了。这样剪枝能大大减少时间复杂度。</p>
+<p>时限给了 20s，大概 1.3s 就能跑完。</p>
+<p><del>题解看不懂</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> db;</span><br><span class="line"><span class="keyword">const</span> db eps = <span class="number">1e-10</span>;</span><br><span class="line"><span class="keyword">const</span> db pi = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"><span class="keyword">const</span> ll inf = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> ll maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">dcmp</span><span class="params">(db x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">fabs</span>(x) &lt; eps) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> x &gt; <span class="number">0</span>? <span class="number">1</span>: <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    Point(<span class="keyword">double</span> x = <span class="number">0</span>, <span class="keyword">double</span> y = <span class="number">0</span>) : x(x), y(y) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>, &amp;x, &amp;y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Point &amp;a) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (!dcmp(x - a.x))? dcmp(y - a.y) &lt; <span class="number">0</span>: x &lt; a.x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> Point &amp;a) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dcmp(x - a.x) == <span class="number">0</span> &amp;&amp; dcmp(y - a.y) == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">db <span class="title">dis2</span><span class="params">(<span class="keyword">const</span> Point a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">pow</span>(x - a.x, <span class="number">2</span>) + <span class="built_in">pow</span>(y - a.y, <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">db <span class="title">dis</span><span class="params">(<span class="keyword">const</span> Point a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sqrt</span>(dis2(a));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">db <span class="title">dis2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x * x + y * y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">db <span class="title">dis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sqrt</span>(dis2());</span><br><span class="line">    &#125;</span><br><span class="line">    Point <span class="keyword">operator</span>+(<span class="keyword">const</span> Point a) &#123;</span><br><span class="line">        <span class="keyword">return</span> Point(x + a.x, y + a.y);</span><br><span class="line">    &#125;</span><br><span class="line">    Point <span class="keyword">operator</span>-(<span class="keyword">const</span> Point a) &#123;</span><br><span class="line">        <span class="keyword">return</span> Point(x - a.x, y - a.y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">db <span class="title">dot</span><span class="params">(<span class="keyword">const</span> Point a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x * a.x + y * a.y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">db <span class="title">cross</span><span class="params">(<span class="keyword">const</span> Point a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x * a.y - y * a.x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> Point Vector;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Line</span> &#123;</span></span><br><span class="line">    Point s, e;</span><br><span class="line">    Line() &#123;&#125;</span><br><span class="line">    Line(Point s, Point e) : s(s), e(e) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        s.input();</span><br><span class="line">        e.input();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">db <span class="title">length</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.dis(e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 点到直线的距离</span></span><br><span class="line">    <span class="function">db <span class="title">point_to_line</span><span class="params">(Point p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">fabs</span>((p - s).cross(e - s) / length());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 点到线段的距离</span></span><br><span class="line">    <span class="function">db <span class="title">point_to_seg</span><span class="params">(Point p)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(dcmp((p - s).dot((e - s))) &lt; <span class="number">0</span> || dcmp((p - e).dot((s - e))) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> min(p.dis(s), p.dis(e));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> point_to_line(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 线段到线段的距离</span></span><br><span class="line">    <span class="function">db <span class="title">seg_to_seg</span><span class="params">(Line l)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> min(min(point_to_seg(l.s), point_to_seg(l.e)), min(l.point_to_seg(s), l.point_to_seg(e)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Line l[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(Line l1, Line l2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> l1.s &lt; l2.s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            l[i].input();</span><br><span class="line">			<span class="keyword">if</span>(l[i].e &lt; l[i].s) swap(l[i].s, l[i].e);</span><br><span class="line">        &#125;</span><br><span class="line">		sort(l, l + n, cmp);</span><br><span class="line">		<span class="keyword">double</span> ans = <span class="number">1e10</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="comment">// 剪枝部分</span></span><br><span class="line">				<span class="keyword">if</span>(dcmp((l[j].s.x - l[i].e.x) - ans) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				ans = min(ans, l[i].seg_to_seg(l[j])); <span class="comment">// 更新最小值</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.12lf\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1009-Block-Breaker-HDU-6699"><a href="#1009-Block-Breaker-HDU-6699" class="headerlink" title="1009 Block Breaker (HDU 6699)"></a>1009 Block Breaker <a href="http://acm.hdu.edu.cn/showproblem.php?pid=6699" target="_blank" rel="noopener">(HDU 6699)</a></h2><p>$solved by zmz$</p>
+<p>队友签的到。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>吴涛
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wutao18.github.io/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E5%8D%81%E5%9C%BA/" title="2019 杭电多校 第十场">http://wutao18.github.io/2019/08/29/2019-杭电多校-第十场/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ACM%E5%88%B7%E9%A2%98/" rel="tag"># ACM刷题</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"># 数学</a>
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag"># 计算几何</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
+              <a href="/tags/%E6%9A%B4%E5%8A%9B/" rel="tag"># 暴力</a>
+              <a href="/tags/%E6%A6%82%E7%8E%87/" rel="tag"># 概率</a>
+              <a href="/tags/%E5%89%AA%E6%9E%9D/" rel="tag"># 剪枝</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/29/2019-%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1-%E7%AC%AC%E4%B9%9D%E5%9C%BA/" rel="prev" title="2019 杭电多校 第九场">
+      <i class="fa fa-chevron-left"></i> 2019 杭电多校 第九场
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/30/%E6%B4%9B%E8%B0%B7-P3187-BZOJ-1185-HNOI2007-%E6%9C%80%E5%B0%8F%E7%9F%A9%E5%BD%A2%E8%A6%86%E7%9B%96-%E6%97%8B%E8%BD%AC%E5%8D%A1%E5%A3%B3/" rel="next" title="洛谷 P3187 BZOJ 1185 [HNOI2007]最小矩形覆盖 (旋转卡壳)">
+      洛谷 P3187 BZOJ 1185 [HNOI2007]最小矩形覆盖 (旋转卡壳) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1003-Valentine’s-Day-HDU-6693"><span class="nav-number">1.</span> <span class="nav-text">1003 Valentine’s Day (HDU 6693)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1005-Welcome-Party-HDU-6695"><span class="nav-number">2.</span> <span class="nav-text">1005 Welcome Party (HDU 6695)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1007-Closest-Pair-of-Segments-HDU-6697"><span class="nav-number">3.</span> <span class="nav-text">1007 Closest Pair of Segments (HDU 6697)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1009-Block-Breaker-HDU-6699"><span class="nav-number">4.</span> <span class="nav-text">1009 Block Breaker (HDU 6699)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="吴涛"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">吴涛</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">124</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:meettaowu@gmail.com" title="E-Mail → mailto:meettaowu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/wulitaotao/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wulitaotao&#x2F;" rel="noopener" target="_blank">我的博客园</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/myrtle/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;myrtle&#x2F;" rel="noopener" target="_blank">myrtle</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴涛</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">438k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:38</span>
+</div>
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("08/05/2019 00:00:00");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'IMNkizQWu45AM08TtNUvbaDh-gzGzoHsz',
+      appKey     : '9R8dxVbMHigT604DYV21r36A',
+      placeholder: "看完了都不说一句就走么(｀・ω・´)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

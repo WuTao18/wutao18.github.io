@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wutao18.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ACM-ICPC 现场赛不同的赛站可能比赛环境不同，不过一般都是 Ubuntu 系统。附带的软件可能略有不同，可能会有使用习惯的差异导致效率下降或者无法运行代码，但是在终端下编译运行代码都是相同的。本篇博客介绍的是在终端下如何编辑代码、编译代码、运行代码以及调试代码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACM-ICPC 比赛环境的使用">
+<meta property="og:url" content="http://wutao18.github.io/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="WuTao&#39;s Blog">
+<meta property="og:description" content="ACM-ICPC 现场赛不同的赛站可能比赛环境不同，不过一般都是 Ubuntu 系统。附带的软件可能略有不同，可能会有使用习惯的差异导致效率下降或者无法运行代码，但是在终端下编译运行代码都是相同的。本篇博客介绍的是在终端下如何编辑代码、编译代码、运行代码以及调试代码。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-25T15:42:09.000Z">
+<meta property="article:modified_time" content="2020-10-27T03:26:16.175Z">
+<meta property="article:author" content="吴涛">
+<meta property="article:tag" content="ACM指南">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="gdb">
+<meta property="article:tag" content="g++">
+<meta property="article:tag" content="gcc">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wutao18.github.io/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ACM-ICPC 比赛环境的使用 | WuTao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="WuTao's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WuTao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">while(!(succeed = try()));</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="吴涛">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuTao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ACM-ICPC 比赛环境的使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-25 23:42:09" itemprop="dateCreated datePublished" datetime="2019-10-25T23:42:09+08:00">2019-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 11:26:16" itemprop="dateModified" datetime="2020-10-27T11:26:16+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="ACM-ICPC 比赛环境的使用" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>ACM-ICPC 现场赛不同的赛站可能比赛环境不同，不过一般都是 Ubuntu 系统。附带的软件可能略有不同，可能会有使用习惯的差异导致效率下降或者无法运行代码，但是在终端下编译运行代码都是相同的。本篇博客介绍的是在终端下如何编辑代码、编译代码、运行代码以及调试代码。</p>
+<a id="more"></a>
+<h2 id="编辑代码"><a href="#编辑代码" class="headerlink" title="编辑代码"></a>编辑代码</h2><p>当然是 vim 神器了。vim 的学习曲线挺大的，不过掌握基本的使用还是没有问题的，可能一开始离开鼠标效率会不高，但是一旦熟悉了以后效率可能会比使用鼠标高。</p>
+<p>这里介绍 vim 最基本的用法。</p>
+<p>首先新建文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim test.cpp</span><br></pre></td></tr></table></figure>
+<p>文件保存在当前目录下。</p>
+<p>后缀名是你想要的语言：.c .cpp .java .py</p>
+<p>vim 有三种模式：<strong>普通模式 (normal)</strong>、<strong>插入模式 (insert)</strong>、<strong>可视模式 (visual)</strong>。</p>
+<p>一开始进入的就是<strong>普通模式</strong>，或者按下 <code>Esc</code> 键进入普通模式。普通模式就是替代其他编辑器日常使用鼠标的部分。</p>
+<p>普通模式下一般输入命令，所以不能乱按键盘（基本每个键都是命令）。</p>
+<p>普通模式下可以用 <code>hjkl</code> 代替方向键，分别代表左下上右 (当然还是直接用方向键最舒服)。</p>
+<p>普通模式下按 <code>u</code> 可以撤销，撤销上一次对文本的更改。按 <code>x</code>  可以删除光标后的一个字符，按 <code>dd</code> 可以删除整行。</p>
+<p>普通模式下输入 <code>:</code> 最下方就会输出命令框，可以输入命令。最常用的当然是保存和退出。保存是 <code>:w</code>，退出是 <code>:q</code>，强制退出是 <code>q!</code> (也就是修改后未保存直接退出))。可以叠加命令，也就是保存退出是 <code>:wq</code>。还可以增加一些配置，比如显示行号：<code>:set number</code>。但是这样配置退出 vim 后就没了。配置信息可以写在名为 .vimrc 的文件中保存下来。一般保存在 ~/ 目录下 (用户目录)，只对某个用户有效。全局配置一般在 /etc/vim/vimrc 或者 /etc/vimrc，对所有用户有效。</p>
+<p>这里推荐这篇 <a href="https://fancypei.github.io/CodesACM/" target="_blank" rel="noopener">模板</a> 的 vim 配置。</p>
+<p>普通模式按下 <code>i</code> 键进入<strong>插入模式</strong>，插入模式下可以正常编辑代码。</p>
+<p>普通模式按下 <code>v</code> 键进入<strong>可视模式</strong>，可以批量选择代码，最常用的就是批量选择代码，然后按 <code>d</code> 删除。</p>
+<h2 id="编译代码与运行代码"><a href="#编译代码与运行代码" class="headerlink" title="编译代码与运行代码"></a>编译代码与运行代码</h2><p><strong>C</strong></p>
+<p>C语言直接使用 gcc 编译就行。</p>
+<p>假设要编译的文件名为 test.c</p>
+<p>最常用的语句就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -o test</span><br></pre></td></tr></table></figure>
+<p>最后 test 为可执行程序的文件名，如果不加默认生成 a.out。</p>
+<p>加个 <code>-g</code> 可以调试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc test.c -o test -g</span><br></pre></td></tr></table></figure>
+<p>加 <code>-Wall</code> 输出所有警告信息。</p>
+<p>加 <code>-O2</code> 开 O2 优化</p>
+<p>gcc 其他参数挺多的，不过比赛中不常用。</p>
+<p>运行的话直接 <code>./test</code> 就可以了。</p>
+<p>假设同一目录下有 test.in。</p>
+<p>可以使用如下命令对输入重定向：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;test &lt; .&#x2F;test.in</span><br></pre></td></tr></table></figure>
+<p>也可以对输出重定向：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;test &gt; .&#x2F;test.out</span><br></pre></td></tr></table></figure>
+<p>输出内容存入文件 test.out。</p>
+<p>可以一起使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;test &lt; .&#x2F;test.in &gt; .&#x2F;test.out</span><br></pre></td></tr></table></figure>
+<p>这样就不用加什么 <code>freopen</code> 之类的文件操作函数了，有时候提交时忘了删除就直接 WA 了。</p>
+<p><strong>C++</strong></p>
+<p>C++ 使用 g++ 编译。与 gcc 很相似。</p>
+<p>假设要编译的文件名为 test.cpp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp -o test</span><br></pre></td></tr></table></figure>
+<p><code>-g</code>、<code>-Wall</code>、<code>-O2</code> 参数作用与 gcc 一样。</p>
+<p>运行的话与 C语言部分一样。</p>
+<p><strong>Java</strong></p>
+<p>假设要编译的文件为 test.java (注意主类的名字要和文件名一致)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac test.java</span><br></pre></td></tr></table></figure>
+<p>在同一目录下会生成 test.class。</p>
+<p>然后用以下命令运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java test</span><br></pre></td></tr></table></figure>
+<p>注意不要加 .class</p>
+<p><strong>Python</strong></p>
+<p>Python 是解释型语言，直接运行就可以了。</p>
+<p>假设要运行的文件为 test.py</p>
+<p>用 Python2 运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure>
+<p>用 Python3 运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 test.py</span><br></pre></td></tr></table></figure>
+<p>当然目前很多赛站不支持 <code>Python</code>。</p>
+<p>如果想要更方便的编译运行，可以写一些 Shell 脚本。</p>
+<h2 id="调试代码"><a href="#调试代码" class="headerlink" title="调试代码"></a>调试代码</h2><p>这里只讲用 gdb 调试 C++ 程序。</p>
+<p>前提是编译时加了 <code>-g</code> 参数。</p>
+<p>假设要调试的代码为 test.cpp</p>
+<p>先编译：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ test.cpp -o test -g</span><br></pre></td></tr></table></figure>
+<p>运行一下命令进入调试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb test</span><br></pre></td></tr></table></figure>
+<p>输入 <code>l</code> 显示主函数所在的代码部分。</p>
+<p><code>l</code> 后面可以加数字，表示显示的行号。</p>
+<p>也可以加函数名。</p>
+<p>输入 <code>b 10</code> 在第 10 行设置断点。</p>
+<p>输入 <code>delete 10</code> 删除第 10 行的断点。</p>
+<p>输入 <code>r</code> 运行。</p>
+<p>输入 <code>n</code> 单步跟踪。</p>
+<p>输入 <code>c</code> 执行到下一个断点处。</p>
+<p>输入 <code>print x</code> 输出 x 变量的值。</p>
+<p>输入 <code>display x</code> 每次单步执行都输出 x 变量的值。</p>
+<p>输入 <code>q</code> 退出 gdb。</p>
+<p>还可以用 <code>gdb -tui</code> 进入更好看的 gdb。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>吴涛
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wutao18.github.io/2019/10/25/ACM-ICPC-%E6%AF%94%E8%B5%9B%E7%8E%AF%E5%A2%83%E7%9A%84%E4%BD%BF%E7%94%A8/" title="ACM-ICPC 比赛环境的使用">http://wutao18.github.io/2019/10/25/ACM-ICPC-比赛环境的使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ACM%E6%8C%87%E5%8D%97/" rel="tag"># ACM指南</a>
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/gdb/" rel="tag"># gdb</a>
+              <a href="/tags/g/" rel="tag"># g++</a>
+              <a href="/tags/gcc/" rel="tag"># gcc</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/10/24/2015-ACM-ICPC-%E4%BA%9A%E6%B4%B2%E5%8C%BA%E4%B8%8A%E6%B5%B7%E7%AB%99-A-An-Easy-Physics-Problem-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="prev" title="2015 ACM-ICPC 亚洲区上海站 A - An Easy Physics Problem (计算几何)">
+      <i class="fa fa-chevron-left"></i> 2015 ACM-ICPC 亚洲区上海站 A - An Easy Physics Problem (计算几何)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/26/ACM-%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8B%8D%E7%A8%8B%E5%BA%8F/" rel="next" title="ACM 中的对拍程序">
+      ACM 中的对拍程序 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑代码"><span class="nav-number">1.</span> <span class="nav-text">编辑代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译代码与运行代码"><span class="nav-number">2.</span> <span class="nav-text">编译代码与运行代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试代码"><span class="nav-number">3.</span> <span class="nav-text">调试代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="吴涛"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">吴涛</p>
+  <div class="site-description" itemprop="description">个人技术博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">124</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:meettaowu@gmail.com" title="E-Mail → mailto:meettaowu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/wulitaotao/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;wulitaotao&#x2F;" rel="noopener" target="_blank">我的博客园</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/myrtle/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;myrtle&#x2F;" rel="noopener" target="_blank">myrtle</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴涛</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">438k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:38</span>
+</div>
+
+<div>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("08/05/2019 00:00:00");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'IMNkizQWu45AM08TtNUvbaDh-gzGzoHsz',
+      appKey     : '9R8dxVbMHigT604DYV21r36A',
+      placeholder: "看完了都不说一句就走么(｀・ω・´)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
