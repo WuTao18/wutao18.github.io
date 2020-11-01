@@ -194,6 +194,373 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/13/POJ-3268-Silver-Cow-Party-Dijkstra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="吴涛">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuTao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/13/POJ-3268-Silver-Cow-Party-Dijkstra/" class="post-title-link" itemprop="url">POJ 3268 Silver Cow Party (Dijkstra)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-13 20:18:22" itemprop="dateCreated datePublished" datetime="2019-10-13T20:18:22+08:00">2019-10-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 12:00:26" itemprop="dateModified" datetime="2020-10-27T12:00:26+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/10/13/POJ-3268-Silver-Cow-Party-Dijkstra/" class="post-meta-item leancloud_visitors" data-flag-title="POJ 3268 Silver Cow Party (Dijkstra)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/13/POJ-3268-Silver-Cow-Party-Dijkstra/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/13/POJ-3268-Silver-Cow-Party-Dijkstra/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接：<a href="http://poj.org/problem?id=3268" target="_blank" rel="noopener">POJ 3268</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>One cow from each of $N$ farms $(1 ≤ N ≤ 1000)$ conveniently numbered $1..N$ is going to attend the big cow party to be held at farm #$X (1 ≤ X ≤ N)$. A total of $M (1 ≤ M ≤ 100,000)$ unidirectional (one-way roads connects pairs of farms; road $i$ requires $T_i (1 ≤ T_i ≤ 100)$ units of time to traverse.</p>
+<p>Each cow must walk to the party and, when the party is over, return to her farm. Each cow is lazy and thus picks an optimal route with the shortest time. A cow’s return route might be different from her original route to the party since roads are one-way.</p>
+<p>Of all the cows, what is the longest amount of time a cow must spend walking to the party and back?</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/13/POJ-3268-Silver-Cow-Party-Dijkstra/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/12/POJ-1797-Heavy-Transportation-%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="吴涛">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuTao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/12/POJ-1797-Heavy-Transportation-%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/" class="post-title-link" itemprop="url">POJ 1797 Heavy Transportation (最大生成树)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-12 23:23:15" itemprop="dateCreated datePublished" datetime="2019-10-12T23:23:15+08:00">2019-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 11:58:40" itemprop="dateModified" datetime="2020-10-27T11:58:40+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/10/12/POJ-1797-Heavy-Transportation-%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/" class="post-meta-item leancloud_visitors" data-flag-title="POJ 1797 Heavy Transportation (最大生成树)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/12/POJ-1797-Heavy-Transportation-%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/12/POJ-1797-Heavy-Transportation-%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接：<a href="http://poj.org/problem?id=1797" target="_blank" rel="noopener">POJ 1797</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>Background</p>
+<p>Hugo Heavy is happy. After the breakdown of the Cargolifter project he can now expand business. But he needs a clever man who tells him whether there really is a way from the place his customer has build his giant steel crane to the place where it is needed on which all streets can carry the weight.</p>
+<p>Fortunately he already has a plan of the city with all streets and bridges and all the allowed weights.Unfortunately he has no idea how to find the the maximum weight capacity in order to tell his customer how heavy the crane may become. But you surely know.</p>
+<p>Problem</p>
+<p>You are given the plan of the city, described by the streets (with weight limits) between the crossings, which are numbered from 1 to n. Your task is to find the maximum weight that can be transported from crossing 1 (Hugo’s place) to crossing n (the customer’s place). You may assume that there is at least one path. All streets can be travelled in both directions.</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/12/POJ-1797-Heavy-Transportation-%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/12/POJ-1797-Heavy-Transportation-Dijkstra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="吴涛">
+      <meta itemprop="description" content="个人技术博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuTao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/12/POJ-1797-Heavy-Transportation-Dijkstra/" class="post-title-link" itemprop="url">POJ 1797 Heavy Transportation (Dijkstra)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-12 23:22:15" itemprop="dateCreated datePublished" datetime="2019-10-12T23:22:15+08:00">2019-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 11:58:44" itemprop="dateModified" datetime="2020-10-27T11:58:44+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/10/12/POJ-1797-Heavy-Transportation-Dijkstra/" class="post-meta-item leancloud_visitors" data-flag-title="POJ 1797 Heavy Transportation (Dijkstra)" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/10/12/POJ-1797-Heavy-Transportation-Dijkstra/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/12/POJ-1797-Heavy-Transportation-Dijkstra/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>题目链接：<a href="http://poj.org/problem?id=1797" target="_blank" rel="noopener">POJ 1797</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
+<p>Background</p>
+<p>Hugo Heavy is happy. After the breakdown of the Cargolifter project he can now expand business. But he needs a clever man who tells him whether there really is a way from the place his customer has build his giant steel crane to the place where it is needed on which all streets can carry the weight.</p>
+<p>Fortunately he already has a plan of the city with all streets and bridges and all the allowed weights.Unfortunately he has no idea how to find the the maximum weight capacity in order to tell his customer how heavy the crane may become. But you surely know.</p>
+<p>Problem</p>
+<p>You are given the plan of the city, described by the streets (with weight limits) between the crossings, which are numbered from 1 to n. Your task is to find the maximum weight that can be transported from crossing 1 (Hugo’s place) to crossing n (the customer’s place). You may assume that there is at least one path. All streets can be travelled in both directions.</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/10/12/POJ-1797-Heavy-Transportation-Dijkstra/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/12/Visual-Studio-Code-%E4%BF%AE%E6%94%B9%E5%AD%97%E4%BD%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1036,371 +1403,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/06/Codeforces-1195E-OpenStreetMap-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="吴涛">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WuTao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/06/Codeforces-1195E-OpenStreetMap-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">Codeforces 1195E OpenStreetMap (单调队列)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-06 22:24:33" itemprop="dateCreated datePublished" datetime="2019-10-06T22:24:33+08:00">2019-10-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-27 14:19:03" itemprop="dateModified" datetime="2020-10-27T14:19:03+08:00">2020-10-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/10/06/Codeforces-1195E-OpenStreetMap-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces 1195E OpenStreetMap (单调队列)" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/06/Codeforces-1195E-OpenStreetMap-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/06/Codeforces-1195E-OpenStreetMap-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://codeforces.com/contest/1195" target="_blank" rel="noopener">Codeforces Round #574 (Div. 2)</a></p>
-<p>题目链接：<a href="https://codeforces.com/problemset/problem/1195/E" target="_blank" rel="noopener">E. OpenStreetMap</a></p>
-<blockquote>
-<p>Seryozha conducts a course dedicated to building a map of heights of Stepanovo recreation center. He laid a rectangle grid of size $n×m$ cells on a map (rows of grid are numbered from $1$ to $n$ from north to south, and columns are numbered from $1$ to $m$ from west to east). After that he measured the average height of each cell above Rybinsk sea level and obtained a matrix of heights of size $n×m$. The cell $(i,j)$ lies on the intersection of the $i$-th row and the $j$-th column and has height $h_{i,j}$.</p>
-<p>Seryozha is going to look at the result of his work in the browser. The screen of Seryozha’s laptop can fit a subrectangle of size $a×b$ of matrix of heights $(1≤a≤n, 1≤b≤m)$. Seryozha tries to decide how the weather can affect the recreation center — for example, if it rains, where all the rainwater will gather. To do so, he is going to find the cell having minimum height among all cells that are shown on the screen of his laptop.</p>
-<p>Help Seryozha to calculate the sum of heights of such cells for all possible subrectangles he can see on his screen. In other words, you have to calculate the sum of minimum heights in submatrices of size $a×b$ with top left corners in $(i,j)$ over all $1≤i≤n−a+1$ and $1≤j≤m−b+1$.</p>
-<p>Consider the sequence $g_i=(g_{i−1}⋅x+y) mod z$. You are given integers $g0$, $x$, $y$ and $z$. By miraculous coincidence, $h_{i,j}=g_{(i−1)⋅m+j−1}$ ($(i−1)⋅m+j−1$ is the index).</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/06/Codeforces-1195E-OpenStreetMap-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/05/2018-ICPC-Asia-Singapore-Regional-A-Largest-Triangle-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="吴涛">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WuTao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/05/2018-ICPC-Asia-Singapore-Regional-A-Largest-Triangle-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="post-title-link" itemprop="url">2018 ICPC Asia Singapore Regional A. Largest Triangle (计算几何)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-05 22:35:31" itemprop="dateCreated datePublished" datetime="2019-10-05T22:35:31+08:00">2019-10-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-27 11:22:13" itemprop="dateModified" datetime="2020-10-27T11:22:13+08:00">2020-10-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/10/05/2018-ICPC-Asia-Singapore-Regional-A-Largest-Triangle-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="post-meta-item leancloud_visitors" data-flag-title="2018 ICPC Asia Singapore Regional A. Largest Triangle (计算几何)" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/05/2018-ICPC-Asia-Singapore-Regional-A-Largest-Triangle-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/05/2018-ICPC-Asia-Singapore-Regional-A-Largest-Triangle-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>题目链接：<a href="https://open.kattis.com/problems/largesttriangle" target="_blank" rel="noopener">Kattis - largesttriangle</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><blockquote>
-<p>Given $N$ points on a $2$-dimensional space, determine the area of the largest triangle that can be formed using $3$ of those $N$ points. If there is no triangle that can be formed, the answer is $0$.</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/05/2018-ICPC-Asia-Singapore-Regional-A-Largest-Triangle-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wutao18.github.io/2019/10/04/%E6%B4%9B%E8%B0%B7-P1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96-%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="吴涛">
-      <meta itemprop="description" content="个人技术博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WuTao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/04/%E6%B4%9B%E8%B0%B7-P1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96-%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F/" class="post-title-link" itemprop="url">洛谷 P1742 最小圆覆盖 (随机增量)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-04 23:15:58" itemprop="dateCreated datePublished" datetime="2019-10-04T23:15:58+08:00">2019-10-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-27 11:24:26" itemprop="dateModified" datetime="2020-10-27T11:24:26+08:00">2020-10-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">竞赛</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/10/04/%E6%B4%9B%E8%B0%B7-P1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96-%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F/" class="post-meta-item leancloud_visitors" data-flag-title="洛谷 P1742 最小圆覆盖 (随机增量)" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/10/04/%E6%B4%9B%E8%B0%B7-P1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96-%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/04/%E6%B4%9B%E8%B0%B7-P1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96-%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>题目链接：<a href="https://www.luogu.org/problem/P1742" target="_blank" rel="noopener">P1742 最小圆覆盖</a></p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><blockquote>
-<p>给出 N 个点，求最小的包含所有点的圆。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/04/%E6%B4%9B%E8%B0%B7-P1742-%E6%9C%80%E5%B0%8F%E5%9C%86%E8%A6%86%E7%9B%96-%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1468,7 +1474,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">161</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1481,7 +1487,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">129</span>
+        <span class="site-state-item-count">133</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1535,12 +1541,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">448k</span>
+    <span title="站点总字数">451k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:47</span>
+    <span title="站点阅读时长">6:50</span>
 </div>
 
 <div>
